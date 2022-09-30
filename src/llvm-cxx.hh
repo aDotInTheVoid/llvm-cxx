@@ -19,10 +19,9 @@ using std::unique_ptr;
 
 struct ValuePtr;
 
-class IRBuilder {
+class IRBuilder : public llvm::IRBuilder<> {
   public:
-    llvm::IRBuilder<> builder_;
-    IRBuilder(LLVMContext &C) : builder_(C) {}
+    IRBuilder(LLVMContext &context) : llvm::IRBuilder<>(context) {}
 };
 
 unique_ptr<LLVMContext> new_context();

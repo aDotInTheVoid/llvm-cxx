@@ -22,19 +22,19 @@ ValuePtr new_float(double value, LLVMContext &context) {
 }
 
 ValuePtr create_f_add(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs) {
-    Value *v = builder.builder_.CreateFAdd(lhs.value, rhs.value);
+    Value *v = builder.CreateFAdd(lhs.value, rhs.value);
     return ValuePtr{v};
 }
 
 ValuePtr create_f_sub(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs) {
-    Value *v = builder.builder_.CreateFSub(lhs.value, rhs.value);
+    Value *v = builder.CreateFSub(lhs.value, rhs.value);
     return ValuePtr{v};
 }
 ValuePtr create_f_div(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs) {
-    Value *v = builder.builder_.CreateFDiv(lhs.value, rhs.value);
+    Value *v = builder.CreateFDiv(lhs.value, rhs.value);
     return ValuePtr{v};
 }
 ValuePtr create_f_mul(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs) {
-    Value *v = builder.builder_.CreateFMul(lhs.value, rhs.value);
+    Value *v = builder.CreateFMul(lhs.value, rhs.value);
     return ValuePtr{v};
 }
