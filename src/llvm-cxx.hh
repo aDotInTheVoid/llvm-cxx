@@ -22,6 +22,15 @@ class IRBuilder {
     IRBuilder(LLVMContext &C) : builder_(C) {}
 };
 
+class Value {
+  public:
+    llvm::Value *value_;
+    Value(llvm::Value *value) : value_(value) {}
+};
+
 unique_ptr<LLVMContext> new_context();
 unique_ptr<IRBuilder> new_ir_builder(LLVMContext &context);
 unique_ptr<Module> new_module(rust::Str name, LLVMContext &context);
+unique_ptr<Value> new_float(double value, LLVMContext &context);
+unique_ptr<Value> create_f_add(IRBuilder &builder, Value &lhs, Value &rhs);
+unique_ptr<Value> create_f_sub(IRBuilder &builder, Value &lhs, Value &rhs);
