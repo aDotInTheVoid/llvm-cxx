@@ -14,7 +14,10 @@
 
 using llvm::LLVMContext;
 using llvm::Module;
+using llvm::Value;
 using std::unique_ptr;
+
+struct ValuePtr;
 
 class IRBuilder {
   public:
@@ -22,15 +25,13 @@ class IRBuilder {
     IRBuilder(LLVMContext &C) : builder_(C) {}
 };
 
-class Value {
-  public:
-    llvm::Value *value_;
-    Value(llvm::Value *value) : value_(value) {}
-};
-
 unique_ptr<LLVMContext> new_context();
 unique_ptr<IRBuilder> new_ir_builder(LLVMContext &context);
 unique_ptr<Module> new_module(rust::Str name, LLVMContext &context);
-unique_ptr<Value> new_float(double value, LLVMContext &context);
-unique_ptr<Value> create_f_add(IRBuilder &builder, Value &lhs, Value &rhs);
-unique_ptr<Value> create_f_sub(IRBuilder &builder, Value &lhs, Value &rhs);
+ValuePtr new_float(double value, LLVMContext &context);
+ValuePtr create_f_add(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs);
+ValuePtr create_f_sub(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs);
+ValuePtr create_f_div(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs);
+ValuePtr create_f_mul(IRBuilder &builder, ValuePtr lhs, ValuePtr rhs);
+
+// unique_ptr<Value> create_f_sub(IRBuilder &builder, Value &lhs, Value &rhs);

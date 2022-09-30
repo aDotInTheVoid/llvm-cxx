@@ -3,10 +3,10 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/target/cxxbridge",
+                "${workspaceFolder}/../",
+                "${workspaceFolder}/target/cxxbridge/",
                 "/usr/include/llvm-14/",
-                "/usr/include/llvm-c-14/",
-                "${workspaceFolder}"
+                "/usr/include/llvm-c-14/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
